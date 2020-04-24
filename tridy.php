@@ -29,7 +29,7 @@ public $url = "https://api.apify.com/v2/key-value-stores/qAEsnylzdjhCCyZeS/recor
         $data = file_get_contents($this->url); 
         $dekod_dat = json_decode($data); 
 
-        $prepinac = true;
+        $prepinac = false;
 
         $pohlavi = 0;
 
@@ -48,7 +48,11 @@ public $url = "https://api.apify.com/v2/key-value-stores/qAEsnylzdjhCCyZeS/recor
 
         }
 
-        return $pohlavi;
+        if($prepinac == true) {
+            return $pohlavi . " mužu";
+        } elseif ($prepinac == false) {
+            return $pohlavi . " žen";
+        }
 
     }
 
